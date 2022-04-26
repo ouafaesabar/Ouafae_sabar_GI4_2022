@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-title>Formulaire Formation</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form class="form" [formGroup]="userForm" (ngSubmit)="AjouterInfos(userForm.value)">
+    <ion-item>
+      <ion-label position="floating">Nom</ion-label>
+      <ion-input type="text" formControlName="name" class="form-controll" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="text" formControlName="email" class="form-controll" ></ion-input>
+    </ion-item>
+    
+
+    <ion-item>
+      <ion-label position="floating" color="primary">Téléphone</ion-label>
+      <ion-input type="text" formControlName="phone" class="form-controll" ></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label position="floating" color="primary">Formation</ion-label>
+      <ion-select type="password" formControlName="formation" class="form-controll" required>
+        <ion-select-option>Angular</ion-select-option>
+        <ion-select-option>Ionic</ion-select-option>
+      <ion-select-option>Html</ion-select-option>
+      <ion-select-option>css</ion-select-option>
+      </ion-select>
+
+    </ion-item>
+  
+
+    <ion-button type="submit" expand="block">Valider</ion-button>
+  </form>
+</ion-content>

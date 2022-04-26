@@ -1,0 +1,58 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>App Dashboard</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content class="ion-padding">
+    <ion-grid>
+      <ion-row>
+        <ion-col text-center>
+          <h4>Bonjour <strong>{{userDetail['name']}} !</strong> </h4>
+  
+         
+        </ion-col>
+      </ion-row>
+      <h3><strong style="color: red; padding: 10px;">Formaion proposés</strong></h3>
+
+      <ion-accordion-group [multiple]="true" >
+        <ion-accordion *ngFor="let formation of formations | async" toggle-icon="arrow-down-circle">
+          <ion-item slot="header">
+            <ion-label toggle-icon="arrow-down-circle"><strong>{{formation.nom}}</strong></ion-label>
+          </ion-item>
+          <ion-list slot="content" style="background-color: #F3F0F0	;">
+            
+       
+            <dt class="col-sm-2"style="padding: 5px;"><strong>Description :</strong></dt>
+            <dd class="col-sm-9" >{{formation.description}}</dd>
+
+                <dt class="col-sm-2"style="padding: 5px;"><strong>Periode :</strong></dt>
+                <dd class="col-sm-9">{{formation.periode}} h</dd>
+
+                <dt class="col-sm-2"style="padding: 5px;"><strong>Pre-requis :</strong></dt>
+                <dd class="col-sm-9">{{formation.prerequis}}</dd>
+
+                <dt class="col-sm-2"style="padding: 5px;"><strong>Prix :</strong></dt>
+                <dd class="col-sm-9">{{formation.prix}} Dh</dd>
+
+          </ion-list>
+          
+        </ion-accordion>
+        </ion-accordion-group>
+
+     <ng-container *ngIf="userDetail.formation !== null">
+      <h3><strong style="color: red; padding: 10px;">Mes cours</strong></h3>
+          <ion-list *ngFor="let formation of userDetail.formation">
+            <ion-item slot="header">
+              <ion-label toggle-icon="arrow-down-circle">{{formation}}</ion-label>
+            </ion-item>
+
+          </ion-list>
+        </ng-container> 
+      
+        <ion-button expand="block" (click)="remplirFormulaire()">S'inscrire</ion-button>
+
+      <ion-button type="submit" color="danger" expand="block" (click)="signOut()">Se deconnecter</ion-button>
+    </ion-grid>
+    
+  </ion-content>
